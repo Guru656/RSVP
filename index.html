@@ -7,118 +7,108 @@
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #faf8fa;
+      background: #fafbfc;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #1a1a1a;
     }
     .container {
       max-width: 430px;
-      margin: 22px auto 0 auto;
+      margin: 26px auto 0 auto;
       padding: 10px 4px;
     }
     .header {
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 18px;
     }
     .header h1 {
-      font-size: 2.1em;
-      margin-bottom: 4px;
-      color: #c8385e;
-      font-weight: 800;
+      font-size: 2.6em;
+      margin-bottom: 0px;
+      color: #1a1a1a;
+      font-weight: 900;
       letter-spacing: .03em;
-    }
-    .instructions {
-      font-size: 1.37em;
-      background: #fee8ef;
-      color: #c8385e;
-      font-weight: 700;
-      padding: 15px 15px;
-      border-radius: 14px;
-      margin-bottom: 18px;
-      text-align: center;
-      box-shadow: 0 2px 7px #0001;
-      letter-spacing: .02em;
+      line-height: 1.08;
     }
     .event-card {
       background: #fff;
-      margin-bottom: 14px;
-      border-radius: 13px;
-      box-shadow: 0 1px 8px #0001;
-      padding: 16px 13px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px #0001;
+      padding: 17px 13px;
       display: flex;
       flex-direction: column;
     }
     .event-label {
-      font-size: 1.25em;
-      font-weight: 800;
+      font-size: 1.56em;
+      font-weight: 900;
       margin-bottom: 9px;
-      color: #ad1850;
+      color: #1a1a1a;
       letter-spacing: .01em;
     }
     .input-row {
       display: flex;
-      justify-content: flex-start;
-      gap: 14px;
-      margin-top: 3px;
+      gap: 16px;
+      margin-top: 6px;
+      flex-wrap: wrap;
     }
     label {
-      font-size: 1.09em;
+      font-size: 1.17em;
       font-weight: 500;
+      color: #222;
     }
     select {
-      font-size: 1.23em;
+      font-size: 1.28em;
       padding: 9px 8px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      background: #f8f6fb;
-      box-shadow: 0 1px 2px #0001;
-      min-width: 52px;
+      background: #f8f8f8;
+      min-width: 54px;
       margin-left: 4px;
     }
     .btns {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      margin-top: 26px;
-      margin-bottom: 8px;
+      gap: 13px;
+      margin-top: 29px;
+      margin-bottom: 14px;
     }
     button {
       padding: 18px 0;
-      border-radius: 11px;
+      border-radius: 13px;
       border: none;
-      font-size: 1.22em;
-      font-weight: 700;
-      background: #25d366;
+      font-size: 1.3em;
+      font-weight: 800;
+      background: #222;
       color: #fff;
       cursor: pointer;
       width: 100%;
       box-shadow: 0 1px 4px #0002;
+      letter-spacing: .01em;
       transition: background 0.2s;
-      letter-spacing: .015em;
     }
     button.secondary {
-      background: #f2eff3;
-      color: #8e2671;
-      border: 1px solid #e1cddd;
+      background: #fff;
+      color: #222;
+      border: 1.2px solid #222;
     }
-    button:active, button:focus { outline: 2px solid #b3f6c2; }
-    button:hover { background: #128c7e; }
-    button.secondary:hover { background: #e9dbea; }
+    button:active, button:focus { outline: 2px solid #a4aec3; }
+    button:hover { background: #333; }
+    button.secondary:hover { background: #f5f5f5; }
     #copyMsg {
-      color: #32ad71;
+      color: #17623b;
       text-align: center;
-      font-size: 1.08em;
-      margin-top: 4px;
+      font-size: 1.07em;
+      margin-top: 3px;
       display: none;
+      font-weight: 600;
     }
     @media (max-width: 480px) {
       .container { padding: 6px 2px;}
       .event-card { padding: 12px 8px;}
       select { min-width: 42px; }
-      .instructions { font-size: 1.19em; padding: 12px 4px; }
-      .header h1 { font-size: 1.35em; }
-      .event-label { font-size: 1.18em; }
+      .header h1 { font-size: 2em; }
+      .event-label { font-size: 1.4em; }
+      label { font-size: 1em; }
     }
   </style>
 </head>
@@ -127,11 +117,6 @@
     <div class="header">
       <h1>Wedding RSVP</h1>
     </div>
-    <div class="instructions">
-      Let us know number of adults and kids attending.<br>
-      Please click WhatsApp button below, or copy button to manually paste the message.
-    </div>
-
     <form id="rsvpForm" autocomplete="off">
       <div class="event-card">
         <div class="event-label">Jaggo (Sangeet Night) – 28th Aug</div>
