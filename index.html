@@ -2,109 +2,229 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Wedding RSVP - WhatsApp Response Maker</title>
+  <title>Wedding RSVP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 540px; margin: 40px auto; background: #f9f6f8; padding: 28px; border-radius: 16px; }
-    h1, h2 { color: #c8385e; margin-bottom: 0.3em; }
-    .section { background: #fff; border-radius: 10px; margin-bottom: 24px; box-shadow: 0 2px 8px #0001; padding: 16px 22px; }
-    .event-group { margin-bottom: 18px; }
-    label { display: inline-block; min-width: 180px; font-weight: 500; }
-    select { padding: 4px 8px; margin-right: 12px; font-size: 1em; }
-    .btns { display: flex; gap: 16px; margin-top: 28px; }
-    button { background: #25d366; color: white; border: none; padding: 12px 22px; border-radius: 8px; cursor: pointer; font-size: 1em; transition: background 0.2s;}
-    button.secondary { background: #eee; color: #333; border: 1px solid #ccc;}
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #faf8fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 420px;
+      margin: 18px auto 0 auto;
+      padding: 10px 6px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .header h1 {
+      font-size: 1.55em;
+      margin-bottom: 4px;
+      color: #c8385e;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .instructions {
+      font-size: 1em;
+      margin-bottom: 16px;
+      line-height: 1.3;
+      color: #7c2a4d;
+      padding: 0 9px;
+    }
+    .event-card {
+      background: #fff;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px #0001;
+      padding: 13px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .event-label {
+      font-size: 1.05em;
+      font-weight: 600;
+      margin-bottom: 9px;
+      color: #ad1850;
+    }
+    .input-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 14px;
+      margin-top: 3px;
+    }
+    label {
+      font-size: .97em;
+      font-weight: 500;
+    }
+    select {
+      font-size: 1.13em;
+      padding: 7px 8px;
+      border-radius: 7px;
+      border: 1px solid #ccc;
+      background: #f8f6fb;
+      box-shadow: 0 1px 2px #0001;
+      min-width: 52px;
+      margin-left: 4px;
+    }
+    .btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+    }
+    button {
+      padding: 16px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.1em;
+      font-weight: 600;
+      background: #25d366;
+      color: #fff;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 1px 4px #0002;
+      transition: background 0.2s;
+    }
+    button.secondary {
+      background: #f2eff3;
+      color: #8e2671;
+      border: 1px solid #e1cddd;
+    }
+    button:active, button:focus { outline: 2px solid #b3f6c2; }
     button:hover { background: #128c7e; }
-    button.secondary:hover { background: #f9ecf3; }
-    #copyMsg { color: #32ad71; margin-left: 6px; font-size: 0.98em; display: none;}
-    @media (max-width: 600px) {
-      body { padding: 4vw; }
-      .section { padding: 4vw; }
-      label { min-width: 120px; }
+    button.secondary:hover { background: #e9dbea; }
+    #copyMsg {
+      color: #32ad71;
+      text-align: center;
+      font-size: 1em;
+      margin-top: 3px;
+      display: none;
+    }
+    @media (max-width: 430px) {
+      .container { padding: 6px 2px;}
+      .event-card { padding: 12px 9px;}
+      select { min-width: 42px; }
     }
   </style>
 </head>
 <body>
-  <h1>Wedding RSVP</h1>
-  <p>Let us know number of adults and kids attending. Please click WhatsApp button below, or copy button to manually paste the message.</p>
-  
-  <form id="rsvpForm">
-    <div class="section">
-      <h2>Main / Big Party Event at Denham Mount</h2>
-      <div class="event-group">
-        <label>Jaggo (Sangeet Night) – 28th Aug:</label>
-        Adults <select id="jaggoAdults">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-        Kids <select id="jaggoKids">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-      </div>
-      <div class="event-group">
-        <label>Wedding Reception – 30th Aug:</label>
-        Adults <select id="recpAdults">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-        Kids <select id="recpKids">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-      </div>
+  <div class="container">
+    <div class="header">
+      <h1>Wedding RSVP</h1>
     </div>
-    <div class="section">
-      <h2>Family Event at Home / Gurdwara</h2>
-      <div class="event-group">
-        <label>Mehndi – 26th Aug:</label>
-        Adults <select id="mehndiAdults">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-        Kids <select id="mehndiKids">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-      </div>
-      <div class="event-group">
-        <label>Haldi – 29th Aug:</label>
-        Adults <select id="haldiAdults">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-        Kids <select id="haldiKids">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-      </div>
-      <div class="event-group">
-        <label>Anand Karaj – 30th Aug:</label>
-        Adults <select id="karajAdults">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-        Kids <select id="karajKids">
-          <option>0</option><option>1</option><option>2</option>
-          <option>3</option><option>4</option><option>5</option>
-          <option>6</option><option>7</option><option>8</option><option>9</option>
-        </select>
-      </div>
+    <div class="instructions">
+      Let us know number of adults and kids attending.<br>
+      Please click WhatsApp button below, or copy button to manually paste the message.
     </div>
-    <div class="btns">
-      <button type="button" onclick="sendWhatsapp()">Send update via WhatsApp</button>
-      <button type="button" class="secondary" onclick="copyResponse()">Copy response to paste manually</button>
-      <span id="copyMsg">Copied!</span>
-    </div>
-  </form>
+
+    <form id="rsvpForm" autocomplete="off">
+      <div class="event-card">
+        <div class="event-label">Jaggo (Sangeet Night) – 28th Aug</div>
+        <div class="input-row">
+          <label>Adults
+            <select id="jaggoAdults">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+          <label>Kids
+            <select id="jaggoKids">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-label">Wedding Reception – 30th Aug</div>
+        <div class="input-row">
+          <label>Adults
+            <select id="recpAdults">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+          <label>Kids
+            <select id="recpKids">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-label">Mehndi – 26th Aug</div>
+        <div class="input-row">
+          <label>Adults
+            <select id="mehndiAdults">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+          <label>Kids
+            <select id="mehndiKids">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-label">Haldi – 29th Aug</div>
+        <div class="input-row">
+          <label>Adults
+            <select id="haldiAdults">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+          <label>Kids
+            <select id="haldiKids">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-label">Gurdwara (Anand Karaj) – 30th Aug</div>
+        <div class="input-row">
+          <label>Adults
+            <select id="karajAdults">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+          <label>Kids
+            <select id="karajKids">
+              <option>0</option><option>1</option><option>2</option>
+              <option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="btns">
+        <button type="button" onclick="sendWhatsapp()">Send update via WhatsApp</button>
+        <button type="button" class="secondary" onclick="copyResponse()">Copy response to paste manually</button>
+        <span id="copyMsg">Copied!</span>
+      </div>
+    </form>
+  </div>
   <script>
     function formatEvent(name, adultsId, kidsId) {
       const adults = document.getElementById(adultsId).value;
@@ -134,7 +254,7 @@
     function copyResponse() {
       let msg = formatResponse();
       navigator.clipboard.writeText(msg).then(() => {
-        document.getElementById('copyMsg').style.display = 'inline';
+        document.getElementById('copyMsg').style.display = 'block';
         setTimeout(()=> document.getElementById('copyMsg').style.display = 'none', 1700);
       });
     }
