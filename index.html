@@ -2,110 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Wedding RSVP</title>
+  <title>Angad's Wedding RSVP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #172047;
+      background: #fff;
       margin: 0;
       padding: 0;
-      color: #e9e9ed;
+      color: #21242a;
     }
     .container {
       max-width: 430px;
-      margin: 26px auto 0 auto;
+      margin: 32px auto 0 auto;
       padding: 10px 4px;
     }
     .header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
     .header h1 {
-      font-size: 2.6em;
-      margin-bottom: 0px;
-      color: #fff;
+      font-size: 2.5em;
+      margin-bottom: 0;
+      color: #222;
       font-weight: 900;
       letter-spacing: .03em;
       line-height: 1.08;
-      text-shadow: 0 2px 18px #1e2655;
     }
     .event-card {
-      background: #212c58;
+      background: #f7f8fa;
       margin-bottom: 18px;
       border-radius: 14px;
-      box-shadow: 0 2px 12px #141a3a88;
-      padding: 24px 13px 18px 13px;
+      box-shadow: 0 2px 12px #eee;
+      padding: 22px 13px 15px 13px;
       display: flex;
       flex-direction: column;
     }
     .event-label {
-      font-size: 1.56em;
+      font-size: 1.45em;
       font-weight: 900;
-      margin-bottom: 13px;
-      color: #c8d6f6;
+      margin-bottom: 14px;
+      color: #21242a;
       letter-spacing: .01em;
-      text-shadow: 0 1px 8px #1e2655;
     }
     .input-row {
       display: flex;
-      gap: 24px;
+      gap: 22px;
       margin-top: 6px;
       flex-wrap: wrap;
     }
     label {
-      font-size: 1.38em;
+      font-size: 1.29em;
       font-weight: 700;
-      color: #fff;
+      color: #21242a;
       margin-bottom: 4px;
       letter-spacing: .01em;
     }
     select {
-      font-size: 1.35em;
-      padding: 10px 12px;
+      font-size: 1.23em;
+      padding: 10px 13px;
       border-radius: 8px;
-      border: 1.5px solid #5b618c;
-      background: #f7f9fd;
-      color: #252d4b;
+      border: 1.5px solid #babcc2;
+      background: #fff;
+      color: #21242a;
       min-width: 54px;
-      margin-left: 7px;
+      margin-left: 8px;
       font-weight: 600;
-      box-shadow: 0 1px 3px #141a3a33;
+      box-shadow: 0 1px 3px #eee;
     }
     .btns {
       display: flex;
       flex-direction: column;
-      gap: 13px;
-      margin-top: 29px;
-      margin-bottom: 14px;
+      gap: 14px;
+      margin-top: 32px;
+      margin-bottom: 16px;
     }
     button {
       padding: 18px 0;
       border-radius: 13px;
       border: none;
-      font-size: 1.35em;
+      font-size: 1.3em;
       font-weight: 800;
       background: #25d366;
       color: #fff;
       cursor: pointer;
       width: 100%;
-      box-shadow: 0 1px 12px #25d36644;
+      box-shadow: 0 1px 8px #25d36633;
       letter-spacing: .01em;
       transition: background 0.2s;
     }
     button.secondary {
       background: #fff;
-      color: #1e2655;
+      color: #222;
       border: 1.5px solid #25d366;
       font-weight: 700;
     }
     button:active, button:focus { outline: 2px solid #25d366; }
     button:hover { background: #128c7e; }
-    button.secondary:hover { background: #f1f4fa; }
+    button.secondary:hover { background: #f3f6f8; }
     #copyMsg {
       color: #25d366;
       text-align: center;
-      font-size: 1.12em;
+      font-size: 1.09em;
       margin-top: 3px;
       display: none;
       font-weight: 600;
@@ -115,15 +113,15 @@
       .event-card { padding: 16px 7px;}
       select { min-width: 42px; }
       .header h1 { font-size: 2em; }
-      .event-label { font-size: 1.32em; }
-      label { font-size: 1.12em; }
+      .event-label { font-size: 1.19em; }
+      label { font-size: 1.09em; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>Wedding RSVP</h1>
+      <h1>Angad's Wedding RSVP</h1>
     </div>
     <form id="rsvpForm" autocomplete="off">
       <div class="event-card">
