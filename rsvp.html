@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding RSVP - WhatsApp Response Maker</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 540px; margin: 40px auto; background: #f9f6f8; padding: 28px; border-radius: 16px; }
+    h1, h2 { color: #c8385e; margin-bottom: 0.3em; }
+    .section { background: #fff; border-radius: 10px; margin-bottom: 24px; box-shadow: 0 2px 8px #0001; padding: 16px 22px; }
+    .event-group { margin-bottom: 18px; }
+    label { display: inline-block; min-width: 180px; font-weight: 500; }
+    select { padding: 4px 8px; margin-right: 12px; font-size: 1em; }
+    .btns { display: flex; gap: 16px; margin-top: 28px; }
+    button { background: #25d366; color: white; border: none; padding: 12px 22px; border-radius: 8px; cursor: pointer; font-size: 1em; transition: background 0.2s;}
+    button.secondary { background: #eee; color: #333; border: 1px solid #ccc;}
+    button:hover { background: #128c7e; }
+    button.secondary:hover { background: #f9ecf3; }
+    #copyMsg { color: #32ad71; margin-left: 6px; font-size: 0.98em; display: none;}
+    @media (max-width: 600px) {
+      body { padding: 4vw; }
+      .section { padding: 4vw; }
+      label { min-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Wedding RSVP</h1>
+  <p>Let us know number of adults and kids attending. Please click WhatsApp button below, or copy button to manually paste the message.</p>
+  
+  <form id="rsvpForm">
+    <div class="section">
+      <h2>Main / Big Party Event at Denham Mount</h2>
+      <div class="event-group">
+        <label>Jaggo (Sangeet Night) – 28th Aug:</label>
+        Adults <select id="jaggoAdults">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+        Kids <select id="jaggoKids">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+      </div>
+      <div class="event-group">
+        <label>Wedding Reception – 30th Aug:</label>
+        Adults <select id="recpAdults">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+        Kids <select id="recpKids">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+      </div>
+    </div>
+    <div class="section">
+      <h2>Family Event at Home / Gurdwara</h2>
+      <div class="event-group">
+        <label>Mehndi – 26th Aug:</label>
+        Adults <select id="mehndiAdults">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+        Kids <select id="mehndiKids">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+      </div>
+      <div class="event-group">
+        <label>Haldi – 29th Aug:</label>
+        Adults <select id="haldiAdults">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+        Kids <select id="haldiKids">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+      </div>
+      <div class="event-group">
+        <label>Anand Karaj – 30th Aug:</label>
+        Adults <select id="karajAdults">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+        Kids <select id="karajKids">
+          <option>0</option><option>1</option><option>2</option>
+          <option>3</option><option>4</option><option>5</option>
+          <option>6</option><option>7</option><option>8</option><option>9</option>
+        </select>
+      </div>
+    </div>
+    <div class="btns">
+      <button type="button" onclick="sendWhatsapp()">Send update via WhatsApp</button>
+      <button type="button" class="secondary" onclick="copyResponse()">Copy response to paste manually</button>
+      <span id="copyMsg">Copied!</span>
+    </div>
+  </form>
+  <script>
+    function formatEvent(name, adultsId, kidsId) {
+      const adults = document.getElementById(adultsId).value;
+      const kids = document.getElementById(kidsId).value;
+      let msg = `${name}: ${adults} adult${adults == '1' ? '' : 's'}`;
+      if (kids !== '0') {
+        msg += `, ${kids} kid${kids == '1' ? '' : 's'}`;
+      }
+      return msg;
+    }
+    function formatResponse() {
+      let lines = [
+        formatEvent('Jaggo', 'jaggoAdults', 'jaggoKids'),
+        formatEvent('Reception', 'recpAdults', 'recpKids'),
+        formatEvent('Mehndi', 'mehndiAdults', 'mehndiKids'),
+        formatEvent('Haldi', 'haldiAdults', 'haldiKids'),
+        formatEvent('Gurdwara', 'karajAdults', 'karajKids')
+      ];
+      return lines.join('\n');
+    }
+    function sendWhatsapp() {
+      let msg = formatResponse();
+      let phone = '447918197814'; // Your WhatsApp number
+      let whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappURL, '_blank');
+    }
+    function copyResponse() {
+      let msg = formatResponse();
+      navigator.clipboard.writeText(msg).then(() => {
+        document.getElementById('copyMsg').style.display = 'inline';
+        setTimeout(()=> document.getElementById('copyMsg').style.display = 'none', 1700);
+      });
+    }
+  </script>
+</body>
+</html>
